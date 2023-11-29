@@ -5,10 +5,10 @@ class SessionsController < ApplicationController
     end
     
     def create 
-        email = params[:users][:email]
-        password = params[:users][:password]
+        email = params[:user][:email]
+        password = params[:user][:password]
         @user = User.find_by_credentials(email,password)
-        if @user.save 
+        if @user 
             login!(@user)
             redirect_to user_url(@user)
         else
